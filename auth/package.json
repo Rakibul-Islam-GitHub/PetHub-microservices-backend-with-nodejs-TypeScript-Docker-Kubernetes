@@ -4,7 +4,7 @@
   "description": "this is the auth service of a microservice app ",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts"
+    "start": "ts-node-dev --poll src/index.ts"
   },
   "repository": {
     "type": "git",
