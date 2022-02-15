@@ -1,4 +1,5 @@
 import express, { json } from "express";
+import { errorHandler } from "./middleware/errorHandlingMiddleware";
 import {currentUserRouter} from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
@@ -11,6 +12,7 @@ app.use(signupRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
 
+app.use(errorHandler)
 
 app.get('/', (req, res) => {
     res.send('Hello world')
