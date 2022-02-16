@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { body, validationResult  } from "express-validator";
+import { RequestValidationError } from "../errors/requestValidationError";
 
 const router = express.Router();
 
@@ -13,7 +14,8 @@ router.post(
       const errors= validationResult(req);
       if (!errors.isEmpty()) {
 
-        res.status(400).send(errors.array());
+        throw new RequestValidationError(errors.array())
+        
           
       }
     res.send({});
