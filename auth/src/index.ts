@@ -1,4 +1,6 @@
 import express, { json } from "express";
+import mongoose from "mongoose";
+
 import { NotFoundError } from "./errors/notFoundError";
 import { errorHandler } from "./middleware/errorHandlingMiddleware";
 import {currentUserRouter} from "./routes/current-user";
@@ -22,7 +24,24 @@ app.get('/', (req, res) => {
     res.send('Hello world')
 })
 
+const startApp= async ()=>{
+    
+    try{
+        await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+        console.log("MongoDB is ready!")
+    }
 
-app.listen(3000, ()=>{
-    console.log("App is Running on port- 3000!")
-})
+    catch(err){
+        console.error(err);
+
+    }
+
+    app.listen(3000, ()=>{
+        console.log("App is Running on port- 3000!")
+    })
+
+}
+
+startApp();
+
+
