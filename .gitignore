@@ -1,2 +1,4 @@
 node_modules/
 .env
+skaffold.yaml
+infrastructure/k8s/ingress-srv.yaml
